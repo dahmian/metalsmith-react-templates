@@ -13,7 +13,12 @@
     "metalsmith-react-templates": "^0.1.9",
     "metalsmith-browserify": "git://github.com/mpd106/metalsmith-browserify",
     "reactify": "^1.0.0",
-    "react": "^0.12.2",
-    "handlebars": "^3.0.0"
+    "react": "^0.12.2"
+  },
+  "devDependencies": {
+    "metalsmith-markdown": "^0.2.1",
+    "metalsmith-templates": "^0.6.1",
+    "metalsmith-path": "^0.1.0",
+    "ejs": "^2.3.1"
   }
 }

@@ -16,7 +16,14 @@ var DefaultTemplate = React.createClass({
   },
   clickHandler: function() {
     //this demos a simple client side change
-    this.setState({contents: "The template was changed through a client side template. Note that the input was not cleared."});
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open('GET', '../json/article2.html');
+    xmlHttp.addEventListener('load', this.loadHandler)
+    xmlHttp.send();
+  },
+  loadHandler: function(event) {
+    var props = JSON.parse(event.target.response);
+    this.setState(props);
   }
 });
 
