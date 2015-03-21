@@ -1,5 +1,4 @@
 var Metalsmith = require('metalsmith');
-var markdown = require('metalsmith-markdown');
 var templates  = require('metalsmith-templates');
 var reactTemplate = require('metalsmith-react-templates');
 var browserify = require('metalsmith-browserify');
