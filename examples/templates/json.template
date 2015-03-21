@@ -1,3 +1,4 @@
 {
-  "title": "<%= title %>"
+  "title": "<%= title %>",
+  "contents": "<%= contents.replace("\n", "")  %>"
 }
