@@ -24,6 +24,7 @@ var DefaultTemplate = React.createClass({
   loadHandler: function(event) {
     var props = JSON.parse(event.target.response);
     this.setState(props);
+    history.replaceState(null, "", props.path);
   }
 });
 
