@@ -4,6 +4,10 @@ var DefaultTemplate = React.createClass({
   getInitialState: function() {
     return this.props; //pulled from src/index.html
   },
+  componentDidMount: function() {
+    history.replaceState(this.props, null, window.location.pathname);
+    window.onpopstate = this.popstateHandler;
+  },
   render: function() {
     return <div>
       <h1>{this.state.title}</h1>
@@ -22,9 +26,12 @@ var DefaultTemplate = React.createClass({
     xmlHttp.send();
   },
   loadHandler: function(event) {
-    var props = JSON.parse(event.target.response);
-    this.setState(props);
-    history.replaceState(null, "", props.path);
+    var newProps = JSON.parse(event.target.response);
+    this.setState(newProps);
+    history.pushState(newProps, null, newProps.path);
+  },
+  popstateHandler: function(event) {
+    this.setState(event.state);
   }
 });
 
