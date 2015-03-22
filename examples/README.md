@@ -5,5 +5,5 @@ This example generates a static site with Metalsmith. It uses React as a templat
 ```
 npm install
 node index
-# Run a webserver and open the url for content/article1.html
+# Run a webserver and open the url for build/content/article1.html
 ```

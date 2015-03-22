@@ -17,7 +17,7 @@ Metalsmith(__dirname)
     dest: 'bundle.js',
     transforms: [reactify]
   })) 
-  .destination('./content')
+  .destination('./build/content')
   .build(function(err) {
     if (err) throw err;
   }) 
@@ -29,7 +29,7 @@ Metalsmith(__dirname)
     engine: 'ejs',
     default: 'json.template'
   }))
-  .destination('./json')
+  .destination('./build/json')
   .build(function(err) {
     if (err) throw err;
   }) 
