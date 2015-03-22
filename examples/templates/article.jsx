@@ -13,17 +13,18 @@ var DefaultTemplate = React.createClass({
       <h1>{this.state.title}</h1>
       <p>{this.state.contents}</p>
       <input/>
-      <p onClick={this.clickHandler} >Then click me!</p>
+      <p><a href="/content/article2.html" onClick={this.clickHandler} >Then click me!</a></p>
     <div style={{display: "none"}} id="props" dangerouslySetInnerHTML={{__html: JSON.stringify(this.props)}}></div>
     <script src="bundle.js"></script>
     </div>
   },
-  clickHandler: function() {
+  clickHandler: function(event) {
     //this demos a simple client side change
     var xmlHttp = new XMLHttpRequest();
-    xmlHttp.open('GET', '../json/article2.html');
+    xmlHttp.open('GET', event.target.href.replace('/content/', '/json/'));
     xmlHttp.addEventListener('load', this.loadHandler)
     xmlHttp.send();
+    return false;
   },
   loadHandler: function(event) {
     var newProps = JSON.parse(event.target.response);
