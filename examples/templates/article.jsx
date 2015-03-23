@@ -20,7 +20,7 @@ var DefaultTemplate = React.createClass({
     </div>
   },
   clickHandler: function(event) {
-    if (event.target.href) {
+    if (event.target.href && event.target.href.search(new RegExp("^" + window.location.origin)) === 0) {
       var xmlHttp = new XMLHttpRequest();
       xmlHttp.open('GET', event.target.href.replace('.html', '.json'));
       xmlHttp.addEventListener('load', this.loadHandler.bind(this, event.target.href))
