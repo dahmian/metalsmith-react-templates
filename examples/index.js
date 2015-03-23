@@ -4,32 +4,23 @@ var reactTemplate = require('metalsmith-react-templates');
 var browserify = require('metalsmith-browserify');
 var reactify = require('reactify');
 var path = require('metalsmith-path');
+var json = require('metalsmith-json-generator');
 
 Metalsmith(__dirname)
   .clean(true)
   .use(path())
+  .use(json())
   .use(reactTemplate({
     directory: 'templates',
-    nonStatic: true
+    nonStatic: true,
+    pattern: '*html'
   })) 
   .use(browserify({
     files: ['../scripts/loader.js'],
     dest: 'bundle.js',
     transforms: [reactify]
   })) 
-  .destination('./build/content')
-  .build(function(err) {
-    if (err) throw err;
-  }) 
-
-Metalsmith(__dirname)
-  .clean(true)
-  .use(path())
-  .use(templates({
-    engine: 'ejs',
-    default: 'json.template'
-  }))
-  .destination('./build/json')
+  .destination('./build')
   .build(function(err) {
     if (err) throw err;
   }) 

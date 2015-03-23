@@ -1,5 +1,0 @@
-{
-  "title": "<%= title %>",
-  "contents": "<%= contents.replace("\n", "")  %>",
-  "path": "<%= path %>"
-}

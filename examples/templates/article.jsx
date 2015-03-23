@@ -11,9 +11,9 @@ var DefaultTemplate = React.createClass({
   render: function() {
     return <div>
       <h1>{this.state.title}</h1>
-      <p dangerouslySetInnerHTML={{__html: this.state.contents}}></p>
+      <div dangerouslySetInnerHTML={{__html: this.state.contents}}></div>
       <input/>
-      <p><a href="/content/article2.html" onClick={this.clickHandler} >Then click me!</a></p>
+      <p><a href="/article2.html" onClick={this.clickHandler} >Then click me!</a></p>
     <script dangerouslySetInnerHTML={{__html: "props = " + JSON.stringify(this.props)}}></script>
     <script src="bundle.js"></script>
     </div>
@@ -21,7 +21,7 @@ var DefaultTemplate = React.createClass({
   clickHandler: function(event) {
     //this demos a simple client side change
     var xmlHttp = new XMLHttpRequest();
-    xmlHttp.open('GET', event.target.href.replace('/content/', '/json/'));
+    xmlHttp.open('GET', event.target.href.replace('.html', '.json'));
     xmlHttp.addEventListener('load', this.loadHandler)
     xmlHttp.send();
     return false;
