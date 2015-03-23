@@ -5,9 +5,11 @@ var browserify = require('metalsmith-browserify');
 var reactify = require('reactify');
 var path = require('metalsmith-path');
 var json = require('metalsmith-json-generator');
+var markdown = require('metalsmith-markdown');
 
 Metalsmith(__dirname)
   .clean(true)
+  .use(markdown())
   .use(path())
   .use(json())
   .use(reactTemplate({
