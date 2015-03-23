@@ -11,12 +11,13 @@ var DefaultTemplate = React.createClass({
   },
   render: function() {
     return <div>
+        <title>{this.state.title}</title>
       <h1>{this.state.title}</h1>
       <div dangerouslySetInnerHTML={{__html: this.state.contents}}></div>
       <input/>
       <script dangerouslySetInnerHTML={{__html: "props = " + JSON.stringify(this.props)}}></script>
       <script src="bundle.js"></script>
-      </div>
+    </div>
   },
   clickHandler: function(event) {
     if (event.target.href) {
