@@ -7,27 +7,38 @@ var DefaultTemplate = React.createClass({
   componentDidMount: function() {
     history.replaceState(this.props, null, window.location.pathname);
     window.onpopstate = this.popstateHandler;
+    document.addEventListener('click', this.clickHandler);
   },
   render: function() {
     return <div>
       <h1>{this.state.title}</h1>
       <div dangerouslySetInnerHTML={{__html: this.state.contents}}></div>
       <input/>
-      <p><a href="/article2.html" onClick={this.clickHandler} >Then click me!</a></p>
-    <script dangerouslySetInnerHTML={{__html: "props = " + JSON.stringify(this.props)}}></script>
-    <script src="bundle.js"></script>
-    </div>
+      <script dangerouslySetInnerHTML={{__html: "props = " + JSON.stringify(this.props)}}></script>
+      <script src="bundle.js"></script>
+      </div>
   },
   clickHandler: function(event) {
-    //this demos a simple client side change
-    var xmlHttp = new XMLHttpRequest();
-    xmlHttp.open('GET', event.target.href.replace('.html', '.json'));
-    xmlHttp.addEventListener('load', this.loadHandler)
-    xmlHttp.send();
-    return false;
+    if (event.target.href) {
+      var xmlHttp = new XMLHttpRequest();
+      xmlHttp.open('GET', event.target.href.replace('.html', '.json'));
+      xmlHttp.addEventListener('load', this.loadHandler.bind(this, event.target.href))
+      xmlHttp.addEventListener('error', this.errorHandler.bind(this, event.target.href))
+      xmlHttp.send();
+      event.preventDefault();
+      return false;
+    }
   },
-  loadHandler: function(event) {
-    var newProps = JSON.parse(event.target.response);
+  errorHandler: function(url, event) {
+    window.location = url;
+  },
+  loadHandler: function(url, event) {
+    try {
+      var newProps = JSON.parse(event.target.response);
+    } catch(err) {
+      window.location = url;
+      return;
+    }
     this.setState(newProps);
     history.pushState(newProps, null, newProps.path);
   },

@@ -2,5 +2,12 @@
 rtemplate: article.jsx
 title: "Article 1: Static Page Generation with Isomorphic React"
 ---
-<p>This is a demo of Isomorphic React. This HTML page was created with React in node, but it can also be rendered with client side code. This demo allows you to load another article through AJAX. Before you load the article, make sure to enter in some text in the input field.</p>
-<p>If everything works, after you click the link below, the article will load and the input will still contain your text. If the input clears, that means that the node react and the client side react are out of sync.</p>
+<p>This is a demo of Isomorphic React using the static site generator <a href="http://www.metalsmith.io/">Metalsmith</a>.</p>
+<p>When you first enter the site, you were served a full HTML page, but subsequent page loads will only load JSON. Unlike an Isomorphic app, all the HTML and JSON are generated in advance. This radically reduces server load.</p>
+<p>Below are a few links to test out the JSON loading code.</p>
+<ul>
+  <li><a href="article2.html">Article 2</a></li>
+  <li><a href="article23.html">Broken Article Link</a></li>
+  <li><a href="https://www.google.com">Google</a></li>
+</ul>
+<p>The input box lets you test data retention. If you enter in text and click on a valid article link, your input text should be retained.</p>
