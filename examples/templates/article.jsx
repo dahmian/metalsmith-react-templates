@@ -11,10 +11,10 @@ var DefaultTemplate = React.createClass({
   render: function() {
     return <div>
       <h1>{this.state.title}</h1>
-      <p>{this.state.contents}</p>
+      <p dangerouslySetInnerHTML={{__html: this.state.contents}}></p>
       <input/>
       <p><a href="/content/article2.html" onClick={this.clickHandler} >Then click me!</a></p>
-    <div style={{display: "none"}} id="props" dangerouslySetInnerHTML={{__html: JSON.stringify(this.props)}}></div>
+    <script dangerouslySetInnerHTML={{__html: "props = " + JSON.stringify(this.props)}}></script>
     <script src="bundle.js"></script>
     </div>
   },
