@@ -6,11 +6,17 @@ var reactify = require('reactify');
 var path = require('metalsmith-path');
 var json = require('metalsmith-json-generator');
 var markdown = require('metalsmith-markdown');
+var collections = require('metalsmith-collections');
 
 Metalsmith(__dirname)
   .clean(true)
   .use(markdown())
   .use(path())
+  .use(collections({
+    articles: {
+      refer: false
+    }
+  }))
   .use(json())
   .use(reactTemplate({
     directory: 'templates',

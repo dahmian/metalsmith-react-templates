@@ -1,20 +1,22 @@
 var React = require('react');
 var Article = require('./article.jsx');
+var List = require('./list.jsx');
 
 var DefaultTemplate = React.createClass({
   getInitialState: function() {
-    return this.props; //pulled from src/index.html
+    return this.props;
   },
   componentDidMount: function() {
-    history.replaceState(this.props, null, window.location.pathname);
+    history.replaceState(this.state, null, window.location.pathname);
     window.onpopstate = this.popstateHandler;
     document.addEventListener('click', this.clickHandler);
   },
   render: function() {
+    var Component = require('./' + this.state.template);
     return <div>
-      <Article {...this.state} />
+      <Component {...this.state} />
       <input/>
-      <script dangerouslySetInnerHTML={{__html: "props = " + JSON.stringify(this.props)}}></script>
+      <script dangerouslySetInnerHTML={{__html: "props = " + JSON.stringify(this.state)}}></script>
       <script src="bundle.js"></script>
     </div>
   },

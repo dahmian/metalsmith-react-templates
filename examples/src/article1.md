@@ -1,5 +1,7 @@
 ---
 title: "Article 1: Static Page Generation with Isomorphic React"
+collection: articles
+template: article.jsx
 ---
 This is a demo of [Isomorphic React](http://bensmithett.github.io/going-isomorphic-with-react/#/) using the static site generator [Metalsmith](http://www.metalsmith.io/).
 
