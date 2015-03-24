@@ -14,7 +14,8 @@
     "metalsmith-browserify": "git://github.com/mpd106/metalsmith-browserify",
     "metalsmith-json-generator": "git://github.com/dahmian/metalsmith-json-generator",
     "reactify": "^1.0.0",
-    "react": "^0.12.2"
+    "react": "^0.12.2",
+    "metalsmith-clean-css": "^2.0.0"
   },
   "devDependencies": {
     "metalsmith-markdown": "^0.2.1",

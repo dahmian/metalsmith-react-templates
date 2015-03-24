@@ -6,9 +6,11 @@ var reactify = require('reactify');
 var path = require('metalsmith-path');
 var json = require('metalsmith-json-generator');
 var markdown = require('metalsmith-markdown');
+var cleanCSS = require('metalsmith-clean-css');
 
 Metalsmith(__dirname)
   .clean(true)
+  .use(cleanCSS())
   .use(markdown())
   .use(path())
   .use(json())
