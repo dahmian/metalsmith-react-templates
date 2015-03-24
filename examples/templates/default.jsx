@@ -14,6 +14,7 @@ var DefaultTemplate = React.createClass({
   render: function() {
     var Component = require('./' + this.state.template);
     return <div>
+      <link rel="stylesheet" href="/main.css"/>
       <Component {...this.state} />
       <input/>
       <script dangerouslySetInnerHTML={{__html: "props = " + JSON.stringify(this.state)}}></script>
