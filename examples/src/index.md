@@ -7,3 +7,4 @@ articles:
  - title: Article 2
    url: article2.html
 ---
+Welcome to the site!
